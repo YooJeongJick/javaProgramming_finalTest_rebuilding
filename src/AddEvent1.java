@@ -1,5 +1,3 @@
-
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -9,11 +7,11 @@ public class AddEvent1 extends Frame {
 	Toolkit tk = Toolkit.getDefaultToolkit();
 	Dimension screenSize = tk.getScreenSize(); 
 	
-	Panel p0, p1, p2, p3;
-	Choice c1, c2;
-	Label l1, l2, l3;
-	Button bArr[] = new Button[13];
-	Button b1, b2;
+	Panel snow_BG, choice_BG, NC_BG, SC_BG;
+	Choice choice_part, choice_LR;
+	Label NC_title, NC_nullBG, SC_title;
+	Button NC_button[] = new Button[13];
+	Button SC_SButton, SC_RButton;
 	
 	Panel 
 	body, 
@@ -33,102 +31,103 @@ public class AddEvent1 extends Frame {
 		setLocation(screenSize.width / 2 - 200, screenSize.height / 2 - 300); 
 		setSize(400, 600);
 		setIconImage(new ImageIcon("images/icon.png").getImage());
-
 		setLayout(null);
 		setResizable(false);
-
 		try {
 		    UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (Exception e) {
 			//
 		}
 
-		p0 = new Panel();
-		p0.setBounds(0, 0, 400, 200);
-		p0.setBackground(Color.lightGray);
-		p0.setLayout(null);
+		snow_BG = new Panel();
+		snow_BG.setBounds(0, 0, 400, 200);
+		snow_BG.setBackground(Color.lightGray);
+		snow_BG.setLayout(null);
 		
-		p1 = new Panel();
-		p1.setBounds(25, 200, 350, 50);
-		p1.setLayout(new GridLayout(1, 2, 5, 5));
+		choice_BG = new Panel();
+		choice_BG.setBounds(25, 200, 350, 50);
+		choice_BG.setLayout(new GridLayout(1, 2, 5, 5));
 		
-		c1 = new Choice();
-		c1.add("눈");
-		c1.add("코");
-		c1.add("입");
-		c1.add("팔");
-		c1.add("손");
-		c1.add("몸");
-		c1.add("장식");
-		c1.add("배경");
-		c1.addItemListener(new visible());
-		p1.add(c1);
+		choice_part = new Choice();
+		choice_part.add("눈");
+		choice_part.add("코");
+		choice_part.add("입");
+		choice_part.add("팔");
+		choice_part.add("손");
+		choice_part.add("몸");
+		choice_part.add("장식");
+		choice_part.add("배경");
+		choice_part.addItemListener(new choice_L());
+		choice_BG.add(choice_part);
 		
-		c2 = new Choice();
-		c2.add("양쪽");
-		c2.add("왼쪽");
-		c2.add("오른쪽");
-		c2.addItemListener(new visible());
-		p1.add(c2);
+		choice_LR = new Choice();
+		choice_LR.add("양쪽");
+		choice_LR.add("왼쪽");
+		choice_LR.add("오른쪽");
+		choice_LR.addItemListener(new choice_L());
+		choice_BG.add(choice_LR);
 		
-		l1 = new Label("< 기본 색상 >", Label.CENTER);
-		l1.setBounds(0, 250, 400, 50);
-		l1.setFont(new Font("Monospaced", Font.PLAIN, 20));
+		//
 		
-		p2 = new Panel();
-		p2.setBounds(25, 300, 350, 150);
-		p2.setLayout(new GridLayout(3, 5, 5, 5));
+		NC_title = new Label("< 기본 색상 >", Label.CENTER);
+		NC_title.setBounds(0, 250, 400, 50);
+		NC_title.setFont(new Font("Monospaced", Font.PLAIN, 20));
+		
+		NC_BG = new Panel();
+		NC_BG.setBounds(25, 300, 350, 150);
+		NC_BG.setLayout(new GridLayout(3, 5, 5, 5));
+		
 		for (int i = 0; i < 10; i++) {
-			bArr[i] = new Button();
-			p2.add(bArr[i]);
+			NC_button[i] = new Button();
+			NC_BG.add(NC_button[i]);
 		}
-		l2 = new Label();
-		p2.add(l2);
+		
+		NC_nullBG = new Label();
+		NC_BG.add(NC_nullBG);
+		
 		for (int i = 0; i < 3; i++) {
-			bArr[10 + i] = new Button();
-			p2.add(bArr[10 + i]);
+			NC_button[10 + i] = new Button();
+			NC_BG.add(NC_button[10 + i]);
 		}
 		
-		l3 = new Label("< 특수 색상 >", Label.CENTER);
-		l3.setBounds(0, 450, 400, 50);
-		l3.setFont(new Font("Monospaced", Font.PLAIN, 20));
+		NC_button[0].setBackground(Color.white);
+		NC_button[1].setBackground(Color.lightGray);
+		NC_button[2].setBackground(Color.gray);
+		NC_button[3].setBackground(Color.darkGray);
+		NC_button[4].setBackground(Color.black);
+		NC_button[5].setBackground(Color.pink);
+		NC_button[6].setBackground(Color.magenta);
+		NC_button[7].setBackground(Color.cyan);
+		NC_button[8].setBackground(Color.orange);
+		NC_button[9].setBackground(Color.yellow);
+		NC_button[10].setBackground(Color.red);
+		NC_button[11].setBackground(Color.blue);
+		NC_button[12].setBackground(Color.green);
 		
-		p3 = new Panel();
-		p3.setBounds(25, 500, 350, 50);
-		p3.setLayout(new GridLayout(1, 2, 5, 5));
+		//
 		
-		b1 = new Button("맞춤 색상");
-		b1.addActionListener(new color_bClick2());
-		p3.add(b1);
+		SC_title = new Label("< 특수 색상 >", Label.CENTER);
+		SC_title.setBounds(0, 450, 400, 50);
+		SC_title.setFont(new Font("Monospaced", Font.PLAIN, 20));
 		
-		b2 = new Button("무작위 색상");
-		b2.addActionListener(new color_bClick3());
-		p3.add(b2);
-
-		bArr[0].setBackground(Color.white);
-		bArr[1].setBackground(Color.lightGray);
-		bArr[2].setBackground(Color.gray);
-		bArr[3].setBackground(Color.darkGray);
-		bArr[4].setBackground(Color.black);
-
-		bArr[5].setBackground(Color.pink);
-		bArr[6].setBackground(Color.magenta);
-		bArr[7].setBackground(Color.cyan);
-		bArr[8].setBackground(Color.orange);
-		bArr[9].setBackground(Color.yellow);
-
-		bArr[10].setBackground(Color.red);
-		bArr[11].setBackground(Color.blue);
-		bArr[12].setBackground(Color.green);
-
-		add(p0);
-		add(p1);
-		add(l1);
-		add(p2);
-		add(l3);
-		add(p3);
+		SC_BG = new Panel();
+		SC_BG.setBounds(25, 500, 350, 50);
+		SC_BG.setLayout(new GridLayout(1, 2, 5, 5));
 		
-		this.setVisible(true);
+		SC_SButton = new Button("맞춤 색상");
+		SC_BG.add(SC_SButton);
+		
+		SC_RButton = new Button("무작위 색상");
+		SC_BG.add(SC_RButton);
+
+		add(snow_BG);
+		add(choice_BG);
+		add(NC_title);
+		add(NC_BG);
+		add(SC_title);
+		add(SC_BG);
+		
+		setVisible(true);
 	}
 	
 	public void setSnow() {
@@ -137,7 +136,6 @@ public class AddEvent1 extends Frame {
 		body.setBackground(Color.white);
 		body.setLayout(null);
 		
-		// 얼굴
 		left_eye = new Panel();
 		left_eye.setBounds(30, 15, 5, 15);
 		left_eye.setBackground(Color.black);
@@ -160,7 +158,6 @@ public class AddEvent1 extends Frame {
 		mouse.setBackground(Color.black);
 		body.add(mouse);
 
-		// 장식
 		deco_1 = new Panel();
 		deco_1.setBounds(0, 55, 110, 15);
 		deco_1.setBackground(Color.gray);
@@ -171,7 +168,6 @@ public class AddEvent1 extends Frame {
 		deco_2.setBackground(Color.gray);
 		body.add(deco_2);
 
-		// 손
 		left_hand = new Panel();
 		left_hand.setBounds(125, 95, 5, 5);
 		left_hand.setBackground(Color.black);
@@ -188,11 +184,11 @@ public class AddEvent1 extends Frame {
 		right_arm.setBounds(250, 97, 20, 2);
 		right_arm.setBackground(Color.black);
 
-		p0.add(body);
-		p0.add(left_hand);
-		p0.add(right_hand);
-		p0.add(left_arm);
-		p0.add(right_arm);
+		snow_BG.add(body);
+		snow_BG.add(left_hand);
+		snow_BG.add(right_hand);
+		snow_BG.add(left_arm);
+		snow_BG.add(right_arm);
 	}
 	
 	public void setEvent() {
@@ -203,94 +199,25 @@ public class AddEvent1 extends Frame {
 		});
 		
 		for (int i = 0; i < 13; i++)
-			bArr[i].addActionListener(new color_bClick1());
+			NC_button[i].addActionListener(new NC_button_L());
+		
+		SC_SButton.addActionListener(new SC_SButton_L());
+
+		SC_RButton.addActionListener(new SC_RButton_L());
 	}
 	
-	class visible implements ItemListener {
+	class choice_L implements ItemListener {
 		public void itemStateChanged(ItemEvent e) {
-			if (c1.getSelectedItem() == c1.getItem(0)
-					|| c1.getSelectedItem() == c1.getItem(3)
-					|| c1.getSelectedItem() == c1.getItem(4))
-				c2.setEnabled(true);
+			if (choice_part.getSelectedItem() == choice_part.getItem(0)
+					|| choice_part.getSelectedItem() == choice_part.getItem(3)
+					|| choice_part.getSelectedItem() == choice_part.getItem(4))
+				choice_LR.setEnabled(true);
 			else
-				c2.setEnabled(false);
+				choice_LR.setEnabled(false);
 		}
 	}
 	
-	public void changeColor(Color c) {
-		if (c1.getSelectedItem() == c1.getItem(0)
-				&& c2.getSelectedItem() == c2.getItem(0)) {
-			left_eye.setBackground(c);
-			right_eye.setBackground(c);
-		}
-		
-		if (c1.getSelectedItem() == c1.getItem(0)
-				&& c2.getSelectedItem() == c2.getItem(1)) {
-			left_eye.setBackground(c);
-		}
-		
-		if (c1.getSelectedItem() == c1.getItem(0)
-				&& c2.getSelectedItem() == c2.getItem(2)) {
-			right_eye.setBackground(c);
-		}
-
-		
-		if (c1.getSelectedItem() == c1.getItem(1)) {
-			nose.setBackground(c);
-		}
-
-		if (c1.getSelectedItem() == c1.getItem(2)) {
-			mouse.setBackground(c);
-		}
-		
-		if (c1.getSelectedItem() == c1.getItem(3)
-				&& c2.getSelectedItem() == c2.getItem(0)) {
-			left_arm.setBackground(c);
-			right_arm.setBackground(c);
-		}
-
-		if (c1.getSelectedItem() == c1.getItem(3)
-				&& c2.getSelectedItem() == c2.getItem(1)) {
-			left_arm.setBackground(c);
-		}
-		
-		if (c1.getSelectedItem() == c1.getItem(3)
-				&& c2.getSelectedItem() == c2.getItem(2)) {
-			right_arm.setBackground(c);
-		}
-
-		if (c1.getSelectedItem() == c1.getItem(4)
-				&& c2.getSelectedItem() == c2.getItem(0)) {
-			left_hand.setBackground(c);
-			right_hand.setBackground(c);
-		}
-		
-		if (c1.getSelectedItem() == c1.getItem(4)
-				&& c2.getSelectedItem() == c2.getItem(1)) {
-			left_hand.setBackground(c);
-		}
-		
-		if (c1.getSelectedItem() == c1.getItem(4)
-				&& c2.getSelectedItem() == c2.getItem(2)) {
-			right_hand.setBackground(c);
-		}
-
-		
-		if (c1.getSelectedItem() == c1.getItem(5)) {
-			body.setBackground(c);
-		}
-
-		if (c1.getSelectedItem() == c1.getItem(6)) {
-			deco_1.setBackground(c);
-			deco_2.setBackground(c);
-		}
-		
-		if (c1.getSelectedItem() == c1.getItem(7)) {
-			p0.setBackground(c);
-		}
-	}
-	
-	class color_bClick1 implements ActionListener {
+	class NC_button_L implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			Button b = (Button)e.getSource();
 			Color c = b.getBackground();
@@ -298,20 +225,20 @@ public class AddEvent1 extends Frame {
 		}
 	}
 	
-	class color_bClick2 implements ActionListener {
+	class SC_SButton_L implements ActionListener {
         JColorChooser chooser=new JColorChooser();
 
 		public void actionPerformed(ActionEvent e) {
             String cmd = e.getActionCommand();
-            if(cmd.equals(b1.getLabel())){
-                Color c = chooser.showDialog(null, b1.getLabel(), Color.white);
+            if(cmd.equals(SC_SButton.getLabel())){
+                Color c = chooser.showDialog(null, SC_SButton.getLabel(), Color.white);
                 if(c != null)
         			changeColor(c);
             }
 		}
 	}
 	
-	class color_bClick3 implements ActionListener {
+	class SC_RButton_L implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			int r = (int)(Math.random() * 256); 
 			int g = (int)(Math.random() * 256); 
@@ -321,8 +248,82 @@ public class AddEvent1 extends Frame {
 		}
 	}
 	
-//	public static void main(String[] args) {
-//		new AddEvent1("달라도 괜찮아");
-//	}
+	public void changeColor(Color c) {
+		if (choice_part.getSelectedItem() == choice_part.getItem(0)
+				&& choice_LR.getSelectedItem() == choice_LR.getItem(0)) {
+			left_eye.setBackground(c);
+			right_eye.setBackground(c);
+		}
+		
+		if (choice_part.getSelectedItem() == choice_part.getItem(0)
+				&& choice_LR.getSelectedItem() == choice_LR.getItem(1)) {
+			left_eye.setBackground(c);
+		}
+		
+		if (choice_part.getSelectedItem() == choice_part.getItem(0)
+				&& choice_LR.getSelectedItem() == choice_LR.getItem(2)) {
+			right_eye.setBackground(c);
+		}
+
+		
+		if (choice_part.getSelectedItem() == choice_part.getItem(1)) {
+			nose.setBackground(c);
+		}
+
+		if (choice_part.getSelectedItem() == choice_part.getItem(2)) {
+			mouse.setBackground(c);
+		}
+		
+		if (choice_part.getSelectedItem() == choice_part.getItem(3)
+				&& choice_LR.getSelectedItem() == choice_LR.getItem(0)) {
+			left_arm.setBackground(c);
+			right_arm.setBackground(c);
+		}
+
+		if (choice_part.getSelectedItem() == choice_part.getItem(3)
+				&& choice_LR.getSelectedItem() == choice_LR.getItem(1)) {
+			left_arm.setBackground(c);
+		}
+		
+		if (choice_part.getSelectedItem() == choice_part.getItem(3)
+				&& choice_LR.getSelectedItem() == choice_LR.getItem(2)) {
+			right_arm.setBackground(c);
+		}
+
+		if (choice_part.getSelectedItem() == choice_part.getItem(4)
+				&& choice_LR.getSelectedItem() == choice_LR.getItem(0)) {
+			left_hand.setBackground(c);
+			right_hand.setBackground(c);
+		}
+		
+		if (choice_part.getSelectedItem() == choice_part.getItem(4)
+				&& choice_LR.getSelectedItem() == choice_LR.getItem(1)) {
+			left_hand.setBackground(c);
+		}
+		
+		if (choice_part.getSelectedItem() == choice_part.getItem(4)
+				&& choice_LR.getSelectedItem() == choice_LR.getItem(2)) {
+			right_hand.setBackground(c);
+		}
+
+		
+		if (choice_part.getSelectedItem() == choice_part.getItem(5)) {
+			body.setBackground(c);
+		}
+
+		if (choice_part.getSelectedItem() == choice_part.getItem(6)) {
+			deco_1.setBackground(c);
+			deco_2.setBackground(c);
+		}
+		
+		if (choice_part.getSelectedItem() == choice_part.getItem(7)) {
+			snow_BG.setBackground(c);
+		}
+	}
+	
+	
+	public static void main(String[] args) {
+		new AddEvent1("달라도 괜찮아");
+	}
 
 }
