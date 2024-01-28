@@ -1,10 +1,8 @@
-
-
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class AddEvent2_Open2 extends Frame {
+public class AddEvent2_1 extends Frame {
 	Toolkit tk = Toolkit.getDefaultToolkit();
 	Dimension screenSize = tk.getScreenSize(); 
 	
@@ -12,19 +10,16 @@ public class AddEvent2_Open2 extends Frame {
 	TextField tfid1;
 	Button b1;
 
-	AddEvent2_Open2(String title) {
+	AddEvent2_1(String title) {
 		super(title);
 		setLocation(screenSize.width / 2 - 200, screenSize.height / 2 - 150); 
 		setSize(400, 300);
 		setIconImage(new ImageIcon("images/icon.png").getImage());
-
 		setLayout(null);
 		setResizable(false);
-		
 		try {
 		    UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (Exception e) {
-			//
 		}
 
 		l1 = new Label("겨울은", Label.CENTER);
@@ -43,7 +38,7 @@ public class AddEvent2_Open2 extends Frame {
 				if (tfid1.getText().equals("강철로 된 무지개")) {
 					closeOpen();
 					JOptionPane.showMessageDialog(null, "맞아! 오늘도 열심히 일해보자");
-					new AddEvent2("못해도 괜찮아");
+					new AddEvent2_2("못해도 괜찮아");
 				}
 			}
 		});
@@ -65,9 +60,9 @@ public class AddEvent2_Open2 extends Frame {
 	public void closeOpen() {
 		setVisible(false);
 	}
-
 	
 //	public static void main(String[] args) {
-//		new AddEvent2_Open2("264");
+//		new AddEvent2_1("264");
 //	}
+	
 }

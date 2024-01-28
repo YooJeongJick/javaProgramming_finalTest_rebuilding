@@ -16,7 +16,8 @@ public class AddEvent1 extends Frame {
 	Panel 
 	body, 
 	left_eye, right_eye, left_eye_plus, right_eye_plus, 
-	nose, mouse,
+	nose, 
+	mouse,
 	deco_1, deco_2,
 	left_hand, right_hand, left_arm, right_arm;
 
@@ -25,6 +26,7 @@ public class AddEvent1 extends Frame {
 		setGUI();
 		setSnow();
 		setEvent();
+		setVisible(true);
 	}
 	
 	public void setGUI() {
@@ -125,9 +127,7 @@ public class AddEvent1 extends Frame {
 		add(NC_title);
 		add(NC_BG);
 		add(SC_title);
-		add(SC_BG);
-		
-		setVisible(true);
+		add(SC_BG);		
 	}
 	
 	public void setSnow() {

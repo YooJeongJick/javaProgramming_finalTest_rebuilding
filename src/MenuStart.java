@@ -68,7 +68,7 @@ public class MenuStart extends Frame{
 		MenuItem miAddEvent2 = new MenuItem("AddEvent2");
 		miAddEvent2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				new AddEvent2_Open1("(일해도 괜찮아)");
+				new AddEvent2("못해도 괜찮아");
 			}
 		});
 		mEvent2.add(miAddEvent2);
